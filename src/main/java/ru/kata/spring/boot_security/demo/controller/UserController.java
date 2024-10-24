@@ -1,7 +1,5 @@
 package ru.kata.spring.boot_security.demo.controller;
 
-//import example.example.entity.User;
-//import example.example.service.UserService;
 import ru.kata.spring.boot_security.demo.entity.User;
 import ru.kata.spring.boot_security.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +15,19 @@ import java.util.List;
 @Controller
 public class UserController {
 
-//    private final UserService userService;
+    private final UserService userService;
 
-//    @Autowired
-//    public UserController(UserService userService) {
-//        this.userService = userService;
-//    }
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-//    @RequestMapping("/")
-//    public String showAllUser(Model model) {
-//        List<User> allUsers = userService.getAllUsers();
-//        model.addAttribute("users", allUsers);
-//        return "users";
-//    }
+    @RequestMapping("/")
+    public String showAllUser(Model model) {
+        List<User> allUsers = userService.getAllUsers();
+        model.addAttribute("users", allUsers);
+        return "users";
+    }
 
     @RequestMapping("/add")
     public String add(Model model) {
@@ -38,22 +36,22 @@ public class UserController {
         return "user-edit";
     }
 
-//    @RequestMapping(method = RequestMethod.POST, value = "/edit")
-//    public String createOrUpdateUser(@ModelAttribute User user) {
-//        userService.saveUser(user);
-//        return "redirect:/";
-//    }
+    @RequestMapping(method = RequestMethod.POST, value = "/edit")
+    public String createOrUpdateUser(@ModelAttribute User user) {
+        userService.saveUser(user);
+        return "redirect:/";
+    }
 
-//    @RequestMapping("/edit/{id}")
-//    public String editUser(@PathVariable(value = "id") Long id, Model model) {
-//        User user = userService.getById(id);
-//        model.addAttribute("user", user);
-//        return "user-edit";
-//    }
+    @RequestMapping("/edit/{id}")
+    public String editUser(@PathVariable(value = "id") Long id, Model model) {
+        User user = userService.getById(id);
+        model.addAttribute("user", user);
+        return "user-edit";
+    }
 
-//    @RequestMapping(value = "/delete/{id}")
-//    public String deleteUser(@PathVariable Long id) {
-//        userService.delete(id);
-//        return "redirect:/";
-//    }
+    @RequestMapping(value = "/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        userService.delete(id);
+        return "redirect:/";
+    }
 }
