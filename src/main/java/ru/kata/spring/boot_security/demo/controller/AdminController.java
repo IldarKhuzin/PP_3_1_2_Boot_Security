@@ -40,15 +40,15 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @GetMapping(value="/edit")
-    public String editUser(@RequestParam Long id, Model model) {
+        @RequestMapping("/edit/{id}")
+    public String editUser(@PathVariable(value = "id") Long id, Model model) {
         User user = userService.getById(id);
         model.addAttribute("user", user);
         return "user-edit";
     }
 
-    @GetMapping(value = "/delete")
-    public String deleteUser(@RequestParam Long id){
+        @RequestMapping(value = "/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:/admin";
     }
