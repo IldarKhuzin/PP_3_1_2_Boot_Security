@@ -34,20 +34,20 @@ public class AdminController {
         return "user-edit";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/edit")
+    @PostMapping(value = "/edit")
     public String createOrUpdateUser(@ModelAttribute User user) {
         userService.saveUser(user);
         return "redirect:/admin";
     }
 
-    @RequestMapping(value="/edit", method = RequestMethod.GET)
+    @GetMapping(value="/edit")
     public String editUser(@RequestParam Long id, Model model) {
         User user = userService.getById(id);
         model.addAttribute("user", user);
         return "user-edit";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @GetMapping(value = "/delete")
     public String deleteUser(@RequestParam Long id){
         userService.delete(id);
         return "redirect:/admin";

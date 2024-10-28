@@ -39,6 +39,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/autentique/**").hasAnyRole("ADMIN","USER")
+                .antMatchers("/user/**").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().successHandler(successUserHandler)
@@ -48,20 +49,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
     // аутентификация inMemory
-    @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("admin")
-                        .password("{bcrypt}$2y$10$Avph6eNHiXq3T9mcYasZXeFQYnBzK9At2SzwNzozyeFL49p/thx9y")
-//                        .password("100")
-                        .roles("ADMIN")
-                        .build();
-
-        return new InMemoryUserDetailsManager(user);
-    }
-
+//    @Bean
+//    @Override
+//    public UserDetailsService userDetailsService() {
+//        UserDetails user =
+//                User.withDefaultPasswordEncoder()
+//                        .username("admin")
+//                        .password("{bcrypt}$2y$10$Avph6eNHiXq3T9mcYasZXeFQYnBzK9At2SzwNzozyeFL49p/thx9y")
+////                        .password("100")
+//                        .roles("ADMIN")
+//                        .build();
+//
+//        return new InMemoryUserDetailsManager(user);
+//    }
+//
 
     @Bean
     public PasswordEncoder passwordEncoder(){

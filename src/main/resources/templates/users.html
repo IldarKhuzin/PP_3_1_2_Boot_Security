@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,5 +34,12 @@
     <a th:href="@{/add/}">Добавить user</a>
     <br>
 </div>
+<li sec:authorize="isAuthenticated()" class="nav-item">
+    <form class="align-middle" th:action="@{/logout}" method="GET">
+        <div class="input-group-prepend">
+            <button class="btn btn-secondary btn-sm" type="submit">Выйти</button>
+        </div>
+    </form>
+</li>
 </body>
 </html>
