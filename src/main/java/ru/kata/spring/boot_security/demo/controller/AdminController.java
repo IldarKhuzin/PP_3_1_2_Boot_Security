@@ -30,9 +30,11 @@ public class AdminController {
     @RequestMapping("/add")
     public String add(Model model) {
         User user = new User();
+        System.out.println("user" + user);
         model.addAttribute("user", user);
         return "user-edit";
     }
+
 
     @PostMapping(value = "/edit")
     public String createOrUpdateUser(@ModelAttribute User user) {
@@ -40,15 +42,14 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-        @RequestMapping("/edit/{id}")
+    @RequestMapping("/edit/{id}")
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
         User user = userService.getById(id);
-            System.out.println("id" + id);
         model.addAttribute("user", user);
         return "user-edit";
     }
 
-        @RequestMapping(value = "/delete/{id}")
+    @RequestMapping(value = "/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.delete(id);
         return "redirect:/admin";
