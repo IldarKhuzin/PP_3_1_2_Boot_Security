@@ -43,6 +43,7 @@ public class AdminController {
         @RequestMapping("/edit/{id}")
     public String editUser(@PathVariable(value = "id") Long id, Model model) {
         User user = userService.getById(id);
+            System.out.println("id" + id);
         model.addAttribute("user", user);
         return "user-edit";
     }
