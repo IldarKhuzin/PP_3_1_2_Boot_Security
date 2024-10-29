@@ -5,15 +5,16 @@
 </head>
 <body>
 <!--<h1>User, welcome spring boot security page!</h1>-->
-<h1 th:text="'User, ' + ${user.username} + ', welcome spring boot security page!'"/>
+<h1 th:text="'User, ' + ${user.name} + ', welcome spring boot security page!'"/>
 <br/><br/>
 <div>
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Возраст</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Role</th>
         </tr>
 
         <tr th:each="us : ${user}">
@@ -21,6 +22,7 @@
             <td th:text="${us.name}"/>
             <td th:text="${us.surname}"/>
             <td th:text="${us.age}"/>
+            <td th:text="${us.authorities}"/>
         </tr>
     </table>
     <br><br>
