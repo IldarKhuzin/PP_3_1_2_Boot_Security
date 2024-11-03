@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Spring Security Example</title>
 </head>
 <body>
-<!--<h1>User, welcome spring boot security page!</h1>-->
 <h1 th:text="'User, ' + ${user.name} + ', welcome spring boot security page!'"/>
 <br/><br/>
 <div>
@@ -22,7 +22,7 @@
             <td th:text="${us.name}"/>
             <td th:text="${us.surname}"/>
             <td th:text="${us.age}"/>
-            <td th:text="${us.authorities}"/>
+            <td th:text="${us.role}"/>
         </tr>
     </table>
     <br><br>
